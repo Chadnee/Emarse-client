@@ -33,7 +33,7 @@ const Review = () => {
         })
     }
     return (
-        <div className='h-full w-full lg:px-40 md:px-40 mt-5 mx-auto '>
+        <div className='h-full w-full bg-slate-100 lg:px-40 md:px-40 px-7 pt-20 md:pt-5 lg:pt-5 mx-auto '>
             <SectionTitle subHeading='At a Glance' heading='Short review'></SectionTitle>
             <div className='flex flex-col items-center mb-7'><ReactStars
                         count={5}
@@ -69,7 +69,7 @@ const Review = () => {
                      {...register("details", { required: true })}/>
                 </label>
                </div>
-               <div className='font-bold mx-10 mt-7 mb-4 text-start'>
+               <div className='font-bold mx-10 mt-7 mb-4 text-center md:text-start lg:text-start'>
                    <input className='rounded-lg bg-amber-800 text-sm text-white px-7 py-2 mt-10' type="submit" value="Send review" />
                </div>
             </form>

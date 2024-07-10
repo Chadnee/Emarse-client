@@ -36,9 +36,9 @@ const UserPaymentHistory = () => {
         });
     }
     return (
-        <div className='w-full px-20 h-full my-20'>
-            {paymentsCart.length>0? <div className="overflow-x-auto">
-                <table className="table">
+        <div className='w-full md:px-20 lg:px-20 h-full my-20'>
+            {paymentsCart.length>0? <div className="overflow-x-auto overflow-y-auto">
+                <table className="table w-full">
                     {/* head */}
                     <thead>
                         <tr className='text-white bg-amber-700 '>
@@ -76,7 +76,7 @@ const UserPaymentHistory = () => {
                     </tbody>
                 </table>
             </div>
-                : <p>No payments history is available & please make sure a payment again.</p>
+                :<div className='flex flex-auto text-slate-500 items-center'><span className='md:pl- lg:pl-'>No payments history is available & please make sure a payment again.</span></div> 
             }
         </div>
     );

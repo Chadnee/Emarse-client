@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   < React.StrictMode>
   <AuthProvider>
     <QueryClientProvider client={queryClient}>
-  <div className='mx-auto'>
+  <div className='mx-auto '>
   <RouterProvider router={router} />
   </div>
 </QueryClientProvider>

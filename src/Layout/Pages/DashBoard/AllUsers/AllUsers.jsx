@@ -72,7 +72,7 @@ const AllUsers = () => {
   }
     
     return (
-        <div className='h-full w-full px-20 my-8'>
+        <div className='h-full w-full px-5 lg:px-20 md:px-20 md:mt-8 lg:mt-8 mt-16 mb-8'>
            <SectionTitle subHeading="---At a Glance---" heading="All Users"></SectionTitle>
             <div className="overflow-x-auto">
   <table className="table table-zebra mt-8">
@@ -88,11 +88,11 @@ const AllUsers = () => {
     </thead>
     <tbody>
       {users.map((user, index) => <tr key = {user._id} className='text-center  font-semibold text-slate-600'>
-        <th className='py-4'>{index+1}</th>
-        <td className='py-4'>{user.name}</td>
-        <td>{user.email}</td>
-        <td>{user.role === "admin"? "admin" : <button onClick={()=>handleMakeAdmin(user)}> <FaUserPlus className='text-3xl text-amber-700'></FaUserPlus></button>}</td>
-        <td className='text-center'><button onClick={()=>handleDeleteUser(user)}><FaTrashCan className='text-3xl text-orange-700'></FaTrashCan></button></td>
+        <th className='md:py-4 lg:py-4 text-[10px] md:text-[16px] lg:text-[16px]'>{index+1}</th>
+        <td className='md:py-4 lg:py-4 text-[10px] md:text-[16px] lg:text-[16px]'>{user.name}</td>
+        <td className='text-[10px] md:text[16px] lg:[text-16px]'>{user.email}</td>
+        <td className=''>{user.role === "admin"? "admin" : <button onClick={()=>handleMakeAdmin(user)}> <FaUserPlus className='text-xl md:text-3xl lg:text-3xl text-amber-700'></FaUserPlus></button>}</td>
+        <td className='text-center'><button onClick={()=>handleDeleteUser(user)}><FaTrashCan className=' text-xl md:text-3xl lg:text-3xl text-orange-700'></FaTrashCan></button></td>
       </tr> )}
      
     </tbody>

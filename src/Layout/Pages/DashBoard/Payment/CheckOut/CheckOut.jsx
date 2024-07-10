@@ -6,18 +6,21 @@ import { FaCrosshairs } from 'react-icons/fa6';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 import useAuth from '../../../../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const CheckOut = ({ _id, productId, name, image, individualPrice, ratings, quantity, quality, category, email, customerName, status, date }) => {
     const { user } = useAuth();
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate()
     const [cardError, setCardError] = useState("");
     const [axiosSecure] = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false)
     const [transectionId, setTransectionId] = useState('');
     
-    const price = individualPrice * quantity;
+    const actualPrice = parseInt(individualPrice) * parseInt(quantity)
+    const price = parseInt(actualPrice)
     console.log(individualPrice, quantity, price)
 
     useEffect(() => {
@@ -97,6 +100,7 @@ const CheckOut = ({ _id, productId, name, image, individualPrice, ratings, quant
                         showConfirmButton: false,
                         timer: 1500
                       });
+                    navigate('/dashBoard/userHome')
                 }
             })
         }
@@ -104,7 +108,7 @@ const CheckOut = ({ _id, productId, name, image, individualPrice, ratings, quant
 
 
     return (
-        <div>
+        <div className='md:mt-40 lg:mt-40 mt-28 mx-5'>
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
@@ -122,9 +126,11 @@ const CheckOut = ({ _id, productId, name, image, individualPrice, ratings, quant
                         },
                     }}
                 />
-                <button type="submit" className='btn btn-sm bg-amber-700 text-white px-3 pb-1' disabled={!stripe || !clientSecret || processing}>
+                <div className='text-center mt-10'>
+                <button type="submit" className='btn btn-sm w-[100px]  lg:w-[100px] bg-amber-700 text-white px-3 pb-1' disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
+                </div>
             </form>
             {cardError && <p className='text-orange-700 text-sm text-start flex items-center gap-2'><FaCrosshairs></FaCrosshairs> Sorry, {cardError}</p>}
             {transectionId && <p className='text-orange-700 text-sm text-start flex items-center gap-2'><FaCrosshairs></FaCrosshairs> payment success</p>}

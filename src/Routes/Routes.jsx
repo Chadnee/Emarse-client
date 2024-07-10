@@ -18,6 +18,11 @@ import AdminPaymentHistory from "../Layout/Pages/DashBoard/Payment/AdminPaymentH
 import ManageProduct from "../Layout/Pages/DashBoard/ManageProduct/ManageProduct";
 import AddItem from "../Layout/Pages/DashBoard/AddItem/AddItem";
 import Settings from "../Layout/Pages/Settings/Settings";
+import CategoryRaw from "../Layout/Pages/Home/Category/CategoryRaw";
+import CategoryRawForSmall from "../Layout/Pages/Home/Category/CategoryRawForSmall";
+import AdminHome from "../Layout/Pages/DashBoard/AdminHome/AdminHome";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
+import UserHome from "../Layout/Pages/DashBoard/UserHome/UserHome";
 
 
 export const router = createBrowserRouter([
@@ -40,27 +45,33 @@ export const router = createBrowserRouter([
          {
           path: "/allCategory",
           element: <AllCategory></AllCategory>
+          
          },
         
          {
           path: "/categoryItem/:category",
           element: <CategoryItem></CategoryItem>,
-          loader:({params})=>fetch(`https://emars-server-8fqc5oghl-chadnee.vercel.app/products/category/${params.category}`)
+          loader:({params})=>fetch(`https://emars-server.vercel.app/products/category/${params.category}`)
          },
          {
           path: "/products/:id",
           element: <ProductDetails></ProductDetails>,
-          loader:({params})=>fetch(`https://emars-server-8fqc5oghl-chadnee.vercel.app/products/id/${params.id}`)
+          loader:({params})=>fetch(`https://emars-server.vercel.app/products/id/${params.id}`)
          },
          {
           path:"/settings",
           element:<Settings></Settings> ,
+         },
+         {
+          path: "/categoryRaw/:category",
+          element:<CategoryRawForSmall></CategoryRawForSmall>,
+          loader:({params})=>fetch(`https://emars-server.vercel.app/products/category/${params.category}`)
          }
       ]
     },
     {
       path: "/dashBoard",
-      element:<DashBoard></DashBoard>,
+      element:<PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
       children: [
        {
         path: "myCart",
@@ -75,9 +86,13 @@ export const router = createBrowserRouter([
         element:<Review></Review>
        },
        {
+        path:"userHome",
+        element:<PrivateRoutes><UserHome></UserHome></PrivateRoutes>
+       },
+       {
         path: "myPayment/:id",
         element:<MyPayment></MyPayment>,
-        loader: ({params}) => fetch(`https://emars-server-8fqc5oghl-chadnee.vercel.app/carts/myPayment/${params.id}`)
+        loader: ({params}) => fetch(`https://emars-server.vercel.app/carts/myPayment/${params.id}`)
        },
        {
         path: 'userPaymentHistory',
@@ -94,6 +109,10 @@ export const router = createBrowserRouter([
        {
         path:'addProduct',
         element:<AddItem></AddItem>
+       },
+       {
+        path:'adminHome',
+        element: <AdminHome></AdminHome>
        }
       ]
     }

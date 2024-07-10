@@ -7,7 +7,7 @@ const useProducts = () => {
     
     const [axiosSecure] = useAxiosSecure()
     
-    const { refetch, data: product = []} = useQuery({
+    const { refetch, data: product = [], isLoading: productLoading } = useQuery({
         queryKey: ["product"],
         queryFn: async() => {
             const res = await axiosSecure.get("/products");
@@ -16,7 +16,7 @@ const useProducts = () => {
         }
     })
 
-    return [product, refetch]
+    return [product, refetch, productLoading ]
 };
 
 export default useProducts;

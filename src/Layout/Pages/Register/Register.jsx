@@ -25,7 +25,7 @@ const Register = () => {
             updateProfileUser(data.name)
             .then(()=> {
                 console.log("user:", data.name)
-                const saveUser = {name: data.name, email:data.email};
+                const saveUser = {name: data.name, email:data.email, role:"user"};
                 axiosSecure.post("/users", saveUser)
                 .then(res =>{
                     console.log(res.data)
@@ -47,33 +47,33 @@ const Register = () => {
     }
     return (
         <div className='w-full'>
-        <div className="hero bg-slate-200 mb-">
+        <div className="md:hero lg:hero bg-slate-200 ">
   <div className="hero-content  flex-col ">
     <div className="">
-      <p className="py-6 text-start">Welcome to Emars! Please Register!!</p>
+      <p className="pt-6 pb-3 mt-12 lg:mt-20 md:mt-20 text-start">Welcome to Emars! Please Register!!</p>
     </div>
-    <div className="card p-7 mx-auto rounded-none shrink-0 w-full  bg-base-100">
-    <form className='md:flex mb-12 lg:flex justify-center w-[700px]  gap-14 items-center' onSubmit={handleSubmit(onSubmit)}>
-           <div className='w-1/2 mx-auto'>
-           <div className="form-control mb-3 w-full ">
+    <div className="card mx-auto p-7  rounded-none shrink-0 w-full  bg-base-100">
+    <form className='md:flex mb-12 lg:flex justify-center w-full  lg:w-[700px] md:w-[700px] lg:gap-14 md:gap-14 items-center' onSubmit={handleSubmit(onSubmit)}>
+           <div className='lg:w-1/2 md:w-1/2 mx-auto'>
+           <div className="form-control mb-2 lg:mb-3 md:mb-3 w-full ">
            <label className="label">
                     <span className="label-text font-semibold font-serif">Name</span>
                 </label>
-                <input type="name" {...register("name", {required : true})} placeholder="Provide your name" className="input rounded-none input-bordered w-full max-w-xs" />
+                <input type="name" {...register("name", {required : true})} placeholder="Provide your name" className="input rounded-none h-10 md:h-12 lg:h-12 input-bordered w-full max-w-xs" />
             {errors.name && <p className='text-orange-700 pl-4 text-start font-semibold text-sm'>This field is required</p>}
             </div>
-            <div className="form-control mb-3 w-full ">
+            <div className="form-control mb-2 lg:mb-3 md:mb-3 w-full ">
             <label className="label">
                     <span className="label-text font-semibold font-serif">Email</span>
                 </label>
-                <input type="email" {...register("email", {required: true})} placeholder="Provide your email" className="input rounded-none input-bordered w-full max-w-xs" />
+                <input type="email" {...register("email", {required: true})} placeholder="Provide your email" className="input rounded-none h-10 md:h-12 lg:h-12 input-bordered w-full max-w-xs" />
             {errors.email && <p className='text-orange-700 pl-4 text-start font-semibold text-sm'>This field is required</p>}
             </div>
-            <div className='form-control mb-3 w-full'>
+            <div className='form-control mb-2 lg:mb-3 md:mb-3 w-full'>
             <label className="label">
                     <span className="label-text font-semibold font-serif">Password</span>
                 </label>
-                <input type="Password" {...register("password", {required: true, pattern: /^(?=.*[0-9])(?=.*[A-Z]).{6,16}$/ })} placeholder="Provide a password" className="input rounded-none input-bordered w-full max-w-xs" />
+                <input type="Password" {...register("password", {required: true, pattern: /^(?=.*[0-9])(?=.*[A-Z]).{6,16}$/ })} placeholder="Provide a password" className="input rounded-none h-10 md:h-12 lg:h-12 input-bordered w-full max-w-xs" />
             {errors.password?.type === "required" && <span className='text-orange-700 pl-4 text-start font-semibold text-sm'>This field is required</span> }
             {errors.password?.type === "pattern"&& <span className='text-orange-700 pl-2 text-start font-semibold text-[10px]'>This password must be in six characters with one upercase & at least one digit</span>}
             </div>
@@ -81,13 +81,13 @@ const Register = () => {
                 <label className="label">
                     <span className="label-text font-semibold font-serif">Confirm password</span>
                 </label>
-                <input type="Password" {...register("confirmedPassword")} placeholder="Provide a password" className="input rounded-none input-bordered w-full max-w-xs" />
+                <input type="Password" {...register("confirmedPassword")} placeholder="Provide a password" className="input rounded-none h-10 md:h-12 lg:h-12 input-bordered w-full max-w-xs" />
             {errors.confirmedPassword?.type === "required" && <span className='text-orange-700 pl-4 text-start font-semibold text-sm'>This field is required</span> }
             
             </div>
            </div>
             
-            <div className='w-1/2 flex flex-col items-center'>
+            <div className='lg:w-1/2 md:w-1/2 flex flex-col items-center'>
             <div>
                 <input className='btn mb-10 text-white rounded-none text-xl bg-amber-700 text-center mt-4 w-64' type="submit" value="Register" />
             </div>

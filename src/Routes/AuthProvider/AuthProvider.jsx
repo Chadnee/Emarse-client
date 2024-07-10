@@ -45,10 +45,11 @@ const AuthProvider = ({children}) => {
 
             //get and set jwt token
             if(currentUser){
-                axios.post("https://emars-server-8fqc5oghl-chadnee.vercel.app/jwt", {email: currentUser.email})
+                axios.post("https://emars-server.vercel.app/jwt", {email: currentUser.email})
                 .then(data =>{
                     console.log(data.data.token)
                     localStorage.setItem('access-token', data.data.token)
+                    setLoading(false)
                 })
              }
              else{

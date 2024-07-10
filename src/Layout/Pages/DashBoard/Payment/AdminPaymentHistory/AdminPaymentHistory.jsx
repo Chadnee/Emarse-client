@@ -45,11 +45,13 @@ const AdminPaymentHistory = () => {
         });
     }
     return (
-        <div className='h-full w-full px-20 my-8'>
+        <div className='h-full w-full px-4 lg:px-20 md:px-20 mt-16 lg:mt-8 md:mt-8 mb-8'>
         
             {
                 allPayments.length>0? <div>
-                    <SectionTitle subHeading="All are paid" heading="Payment history"></SectionTitle>
+                    <p className='text-center text-[#d08d27] underline pb-4'>All are Paid</p>
+                    <p className='text-center font-serif text-3xl'>Payment History</p>
+                   
                 <div className="overflow-x-scroll max-h-screen pr-5 my-8">
                 <table className="table">
                     {/* head */}

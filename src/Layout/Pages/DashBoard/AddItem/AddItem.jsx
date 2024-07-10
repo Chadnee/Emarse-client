@@ -73,9 +73,8 @@ const AddItem = () => {
         // .then(res => console.log(res.data))
     }
     return (
-        <div className='w-full h-full my-7 px-36'>
-            <SectionTitle
-                subHeading="Increase your product" heading="Add Item"></SectionTitle>
+        <div className='w-full h-full mt-16 lg:mt-7 md:mt-7 mb-7 px-5 lg:px-36 md:px-36'>
+           <SectionTitle subHeading="Increase your product" heading="Add Item"></SectionTitle>
             <form onSubmit={handleSubmit(onSubmit)}  className='bg-slate-100 px-10 mt-10 rounded-xl py-10'>
                 <label className="form-control w-full">
                     <div className="label">

@@ -33,9 +33,9 @@ const Banner = () => {
   
   return (
 
-    <div className='flex  mt-2 h-[400px] gap-4 justify-between'>
-      <div className='flex w-full flex-col gap-2'>
-      <video className='h-1/2 w-full rounded-2xl' ref={vedioRef1}  controls autoPlay>
+    <div className='md:flex lg:flex mt-2 h-[400px] gap-4 justify-between'>
+      <div className='md:flex lg:flex hidden md:visible lg:visible w-full flex-col gap-2'>
+      <video className='h-1/2  w-full rounded-2xl' ref={vedioRef1}  controls autoPlay>
         <source src={vedio1} type="video/mp4" />
       </video>
       <video className='h-1/2 w-full rounded-2xl' ref={vedioRef2}  controls autoPlay>
@@ -54,10 +54,10 @@ const Banner = () => {
             clickable: true,
           }}
           navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper rounded-xl"
+          modules={[Autoplay, Navigation]}
+          className="mySwiper  rounded-xl "
         >
-          <SwiperSlide><img className='' src={img1} alt="" /></SwiperSlide>
+          <SwiperSlide className=''><img className='' src={img1} alt="" /></SwiperSlide>
           <SwiperSlide><img className='' src={img2} alt="" /></SwiperSlide>
           <SwiperSlide><img className='' src={img3} alt="" /></SwiperSlide>
           <SwiperSlide><img className='' src={img4} alt="" /></SwiperSlide>
@@ -65,6 +65,7 @@ const Banner = () => {
 
         </Swiper>
       </div>
+     
     </div>
   );
 };

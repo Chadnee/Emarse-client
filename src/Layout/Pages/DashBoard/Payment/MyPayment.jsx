@@ -11,13 +11,13 @@ const stripePromise = loadStripe("pk_test_51NzwAzBUuWC9D1i2z9Bka1Wp3SZ3qnIimH7jk
 const MyPayment = () => {
          
     const product = useLoaderData();
-    const {_id, productId, name, image, price, ratings,quantity, quality, email, customerName, status, date} = product;
+    const {_id, productId, name, category, image, price, ratings,quantity, quality, email, customerName, status, date} = product;
+    console.log(product)
     return (
-        <div className='w-full h-full my-20 px-32'>
-            <SectionTitle heading='Payment'></SectionTitle>
-            
+        <div className='w-full h-full md:my-20 lg:20 my-32 md:px-32 px-7'>
+            <p className='text-4xl text-center fon uppercase text-[#eaba4a]'>Payment</p>
             <Elements stripe={stripePromise}>
-            <CheckOut _id={_id} productId={productId} name={name} image={image} individualPrice={price} quantity ={quantity}
+            <CheckOut _id={_id} productId={productId} name={name} category = {category} image={image} individualPrice={price} quantity ={quantity}
             quality={quality} ratings={ratings} email={email} customerName={customerName} status={status} date={date}></CheckOut>
             </Elements>
         </div>

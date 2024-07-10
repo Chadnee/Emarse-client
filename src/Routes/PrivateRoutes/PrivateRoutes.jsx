@@ -9,14 +9,15 @@ const PrivateRoutes = ({children}) => {
     
     const {user, loading} = useContext(AuthContext)
     const location = useLocation();
-
+    console.log("user:", user)
     if(loading){
-      return <div className="radial-progress" style={{"--value":70}} role="progressbar">70%</div>
+      return <progress className="progress w-56"></progress>
+      // return <div className="radial-progress" style={{"--value":70}} role="progressbar">70%</div>
     }
     if(user){
         return children;
     }
-    return <Navigate to = "/login" state={{from: location}} replace></Navigate>
+    return <Navigate to="/login" state={{from: location}} replace></Navigate>
    // const {user, loading} = useContext(AuthContext)
     // const location = useLocation();
     // console.log(user.email)
