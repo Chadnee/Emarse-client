@@ -12,13 +12,13 @@ import JustForProducts from "../JustForProducts/JustForProducts";
 
 const Home = () => {
     return (
-        <div className="md:mx-20 overflow-hidden">
+        <div className="md:mx-20 overflow-hidden ">
            <Banner></Banner>
            <Benefits></Benefits>
            <FlashProduct></FlashProduct>
            <Category></Category>
            <JustForProducts></JustForProducts>
-           <Arrival></Arrival>
+           {/* <Arrival></Arrival> */}
            <BenefitsForSmall></BenefitsForSmall>
            <About></About>
         </div>

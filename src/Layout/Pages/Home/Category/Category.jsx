@@ -13,34 +13,6 @@ import { Grid, Pagination } from 'swiper/modules';
 import { Autoplay, Navigation } from 'swiper/modules';
 
 const Category = () => {
-   //             const [product] = useProducts();
-   //             const category = product.filter(product => (product.category.slice[1]))
-   //             console.log(category)
-   // const muslimWear = product.filter(items => (items.category === "muslimWear"))
-   // const traditionalWear = product.filter(items => (items.category === "traditionalWear"))
-   // const shoes = product.filter(items => (items.category === "Shoes"))
-   // const bags = product.filter(items => (items.category === "Bags"))
-   // const watches = product.filter(items => (items.category === "Watches"))
-   // const smartPhone = product.filter(items => (items.category === "Smartphone"))
-   // const television = product.filter(items => (items.category === "Television"))
-   // const camera = product.filter(items => (items.category === "Camera"))
-   // const laptop = product.filter(items => (items.category === "Laptop"))
-   // const desktop = product.filter(items => (items.category === "Desktop"))
-   // const fruits = product.filter(items => (items.category === "Fruits Meat & Frozen"))
-   // const cooking = product.filter(items => (items.category === "Cooking Ingredient"))
-   // const snacks = product.filter(items => (items.category === "Snacks & Eggs"))
-   // const laundry = product.filter(items => (items.category === "Laundry & Household"))
-   // const motorbike = product.filter(items => (items.category === "Motorbike"))
-   // const sports = product.filter(items => (items.category === "Sports shoes & clothing"))
-   // const outdoor = product.filter(items => (items.category === "Outdoor Sports Ingredient"))
-   // const boxing = product.filter(items => (items.category === "Boxing & Martial Arts"))
-   // const furniture = product.filter(items => (items.category === "Furniture"))
-   // const cleaner = product.filter(items => (items.category === "Cleaner"))
-   // const categories = cleaner.map(cleaner => cleaner.Category)
-   //    console.log( muslimWear.length, traditionalWear.length, shoes.length, bags.length, watches.length, smartPhone.length,
-   //     television.length, camera.length, laptop.length, desktop.length, fruits.length, cooking.length,
-   //     snacks.length, laundry.length, motorbike.length, sports.length, outdoor.length, boxing.length, furniture.length, cleaner.length
-   //  )
 
    return (
       <div className="mt-8 mb-10">

@@ -4,21 +4,32 @@ import FlashItems from './FlashItems';
 import FlashSmallItems from './FlashSmallItems';
 import { FaGift } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
+import { showProducts } from '../../../../Utils/ShowProducts';
 
 const FlashProduct = () => {
     const [product, productLoading ] = useProducts()
+    const [flashProductSmallDevice, setFlashProductSmallDevice] = useState([])
+    const [flashProductLargeDevice, setFlashProductLargeDevice] = useState([])
    
-    const flashProductAll = product.filter(product => (product.ratings === 5))
-
-    const flashProductLargeDevice = flashProductAll.slice(0,5)
-    const flashProductSmallDevice = flashProductAll.slice(0,10)
-//     const productsss = flashProductSmallDevice.map(productsss => productsss._id)
-//    console.log(productsss);
-//    useEffect(()=>{
-//     const productsss = flashProductSmallDevice.map(productsss => productsss._id)
-//     console.log(productsss);
-//    }, [])
-
+    useEffect(() => {
+        const remainingProduct = async() => {
+           if(product && product.length > 0) {
+             const showProduct = await showProducts(product, 0, 6)
+             setFlashProductSmallDevice(showProduct)
+           }
+        }
+        remainingProduct()
+    }, [product])
+    useEffect(() => {
+        const remainingProduct = async() => {
+           if(product && product.length > 0) {
+             const showProduct = await showProducts(product, 0, 10)
+             setFlashProductLargeDevice(showProduct)
+           }
+        }
+        remainingProduct()
+    }, [product])
+    //console.log(flashProductSmallDevice, flashProductLargeDevice)
     
    
    // make countdown for big sales
@@ -32,7 +43,8 @@ const FlashProduct = () => {
 
         // const endingTime = new Date(deadline)
         // const currentTime = new Date(currentDate)
-        const deadline = "May, 10, 2024"
+        const deadline = new Date()
+        // const deadline = "September, 1, 2024"
 
 const getTime =()=>{
             
@@ -51,7 +63,7 @@ const getTime =()=>{
         }, [])
         //console.log( days, hours, mins, secs)
 
-        if(productLoading && flashProductAll<1 ) {
+        if(productLoading && product.length<1 ) {
             return <div className='flex flex-col items-center justify-center'>
                 <span className='flex justify-center items-center gap-2'>loading <span className="loading loading-spinner text-amber-700 loading-lg "></span></span>
                 </div>;

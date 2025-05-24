@@ -3,48 +3,36 @@ import JustForItems from './JustForItems';
 import useProducts from '../../../../hooks/useProducts';
 import useAuth from '../../../../hooks/useAuth';
 import { FaCircleDollarToSlot, FaCoins, FaGratipay, FaHandshake, FaHouseCircleCheck, FaRotateLeft, FaTruck } from "react-icons/fa6";
+import { showProducts } from '../../../../Utils/ShowProducts';
 
 const JustForProducts = () => {
     const [product, productLoading] = useProducts()
     const [justFor, setJustFor] = useState([])
     
-    // const justForAll = product.filter(p
-    // useEffect(() => {
-    //     // if(!loading && product.length >0 ){
-    //         showProducts(justFor);
-        
-    // }, [product]);
-
-    // const showProducts = products => {
-    //     const justForAll = product.filter(product => (product.ratings === 4))
-    //     const justForLimited = justForAll.slice(0,5);
-    //     setJustFor(justForLimited)
-   
-    // }
     useEffect(() => {
-        const showProducts = (products) => {
-            const justForAll = products.filter(product => product.ratings === 4);
-            const justForLimited = justForAll.slice(0, 5);
-            setJustFor(justForLimited);
-        };
-
-        if (product.length > 0) {
-            showProducts(product);
-        }
+    const  callingProducts = async() => {
+       if(product && product.length> 0) {
+            const showproducts = await showProducts(product, 10, 15)
+            console.log(showproducts)
+            setJustFor(showproducts)
+       }
+    }
+   callingProducts()
     }, [product]);
+ 
+    console.log(justFor)
     
-    
-   const handleShowAll =(item)=>{
-    console.log(item.length)
-          const justForAll = item.filter(product => (product.ratings === 4))
-          const justForLimited =justForAll.slice(0,10)
-          setJustFor(justForLimited);
+   const handleShowAll = async(item)=>{
+     if(product && product.length> 0) {
+        const callingProducts = await showProducts(item, 0, 10)
+        setJustFor(callingProducts)
+     }
         }
-   const handleShowLess =(item)=>{
-    console.log(item.length)
-          const justForAll = item.filter(product => (product.ratings === 4))
-          const justForLimited =justForAll.slice(0,5)
-          setJustFor(justForLimited);
+   const handleShowLess = async(item) =>{
+        if(product && product.length> 0) {
+        const callingProducts = await showProducts(item, 0, 5)
+        setJustFor(callingProducts)
+     }
         }
 
         if(productLoading && justFor<1 ) {

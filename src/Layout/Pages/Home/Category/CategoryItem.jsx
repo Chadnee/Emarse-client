@@ -33,16 +33,18 @@ const CategoryItem = () => {
     handleTheCategory();
   }, [category]);
 
-  const handleAllTheCategory = () => {
-    axiosSecure("/products")
+  const handleAllTheCategory = async() => {
+    await axiosSecure("/products")
       .then(res => {
-        setSearchResult(res.data)
+         const data = res.data;
+      // If it's an array, use it. If not, use empty array.
+      setSearchResult(Array.isArray(data) ? data : []);
         setLoading(false)
       })
   }
-  const handleSearch = (search) => {
+  const handleSearch = async(search) => {
     console.log(search)
-    axiosSecure.get(`/search/${search}`)
+   await axiosSecure.get(`/search/${search}`)
       .then(res => {
         console.log(res.data)
         setSearchResult(res.data)
@@ -124,20 +126,35 @@ const CategoryItem = () => {
               <>
                 {gridMode ?
                   <div className="grid mx-20 w-10/12 md:grid-cols-3 lg:grid-cols-3 mb-14 gap-3 justify-center items-center ">
-                    {
+                  
+                   {
+                    Array.isArray(searchResult) && searchResult.length > 0 ? 
+                    (searchResult.map(item => <CategoryRaw 
+                      key={item._id} 
+                      item={item}></CategoryRaw>)) 
+                    : (<p>No products found</p>)
+                   }
+                    {/* {
                       searchResult.map(item => <CategoryRaw
                         key={item._id}
                         item={item}
                       ></CategoryRaw>)
-                    }
+                    } */}
                   </div> :
                   <div className="flex flex-col mb-14 gap-3 justify-center items-center">
                     {
+                    Array.isArray(searchResult) && searchResult.length > 0 ? 
+                    (searchResult.map(item => <ListCategory 
+                      key={item._id} 
+                      item={item}></ListCategory>)) 
+                    : (<p>No products found</p>)
+                   }
+                    {/* {
                       searchResult.map(item => <ListCategory
                         key={item._id}
                         item={item}>
                       </ListCategory>)
-                    }
+                    } */}
                   </div>}
               </>
           }

@@ -41,6 +41,9 @@ const Navber = () => {
       return userrr;
     }
   })
+
+// console.log(user.displayName
+  //   , userr)
   const profileImage = userr[0]?.image
   console.log(user, users, userr, profileImage);
   const navbar = <>
@@ -125,7 +128,7 @@ const Navber = () => {
               <label tabIndex={0} className="">
                 <li className='text-white font-bold  justify-center gap-1 text-sm items-center md:flex hidden md:visible lg:visible'>
                   {profileImage ? <><img className='w-5 h-5 rounded-full' src={profileImage} alt="" /></>
-                    : <CiSettings className='text-xl'></CiSettings>}{userr[0]?.name}</li>
+                    : <CiSettings className='text-xl'></CiSettings>}{user?.displayName}</li>
                 <ul>
                 <li className=' md:hidden lg:hidden visible'>
                    <IoSettings className=' text-black text-2xl ml-8'></IoSettings>
